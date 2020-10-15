@@ -18,17 +18,17 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-#--- Upgrate and install make and gcc
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update -y && \
-    apt-get install make gcc -y && \
-    apt-get clean && \
-    rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
-
 #--- Upgrate and install lsusb
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y && \
     apt-get install usbutils -y && \
+    apt-get clean && \
+    rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+
+#--- Upgrate and install gparted additional packages
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update -y && \
+    apt-get install btrfs-progs e2fsprogs f2fs-tools dosfstools mtools hfsutils hfsprogs jfsutils nilfs-tools ntfs-3g reiser4progs reiserfsprogs udftools util-linux xfsprogs xfsdump dmsetup dmraid mdadm cryptsetup dmsetup gpart -y && \
     apt-get clean && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
